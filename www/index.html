@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    
+        var count = 0;
+    
+        function count_up(){
+            // alert("b");
+            //console.log(count);
+            if(count < 9999){
+                // alert(count);
+                count++;
+                //console.log("a");
+                image_change();
+            }
+        }
+        
+        function count_down(){
+            if(count>0){
+                // alert(count);
+                count--;
+                //console.log(count);
+                image_change();
+            }
+        }
+        
+        //カウンターの画像を変更する
+        function image_change(){
+            var a=0;
+            var b=0;
+            var c=0;
+            var d=0;
+            
+            var amari;
+            
+            a = count/1000;
+            a=Math.floor(a);
+            amari = count%1000;
+            
+            b = amari/100;
+            b=parseInt(b);
+            amari = amari%100;
+            
+            c = amari/10;
+            c=parseInt(c);
+            amari = amari%10;
+            
+            d = amari;
+            d= parseInt(d);
+            
+            document.getElementById("1000").src="img/no_0"+a+".png";
+            document.getElementById("100").src="img/no_0"+b+".png";
+            document.getElementById("10").src="img/no_0"+c+".png";
+            document.getElementById("1").src="img/no_0"+d+".png";
+            
+            // alert(a);
+            // alert(b);
+            // alert(c);
+            // alert(d);
+        }
+        
+        function reset(){
+                count=0;
+                document.getElementById("1000").src="img/no_00.png";
+                document.getElementById("100").src="img/no_00.png";
+                document.getElementById("10").src="img/no_00.png";
+                document.getElementById("1").src="img/no_00.png";
+        }
+        
+        $(function(){
+            $("#count_up").on("click",function(){
+               count_up(); 
+               //alert(count);
+               
+            });    
+            
+            $("#count_down").on("click",function(){
+               count_down(); 
+            });
+            
+            $("#reset").on("click",function(){
+                reset();
+            });
+        })
+    </script>
+</head>
+<body>
+    <div id="counter">
+        <img src="img/no_00.png" width="55" id="1000"/>
+        <img src="img/no_00.png" width="55" id="100"/>
+        <img src="img/no_00.png" width="55" id="10"/>
+        <img src="img/no_00.png" width="55" id="1"/>
+    </div>
+    
+    <div id="reset">
+        <img src="img/btn_reset_normal.png" width="64"/>
+    </div>
+    <div id="count_button">
+        <img src="img/btn_count_up.gif" width="126" id="count_up"/>
+        <img src="img/btn_count_down.gif" width="126" id="count_down"/>
+    </div>div>
+    
+</body>
+</html>
